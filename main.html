@@ -1,269 +1,228 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canal do YouTube</title>
+    <title>Gerar imagem</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+        html, body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f9fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
+            color: #333;
+            overflow: hidden;
         }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 420px;
             text-align: center;
+            overflow-y: auto;
+            max-height: 90vh;
         }
-        .profile-image {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            margin: 20px auto;
+        h1 {
+            color: #007BFF;
+            font-size: 30px;
+            margin-bottom: 25px;
         }
-        .button-container {
-            overflow-x: auto;
-            white-space: nowrap;
-            margin-top: 20px;
-            text-align: center;
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
         }
-        .button {
-            background-color: #4CAF50;
+        input:focus, select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #007BFF;
             color: white;
-            padding: 10px 20px;
             border: none;
+            border-radius: 8px;
+            font-size: 18px;
             cursor: pointer;
-            border-radius: 5px;
-            margin: 0 10px;
-            display: inline-block;
-            text-decoration: none;
             transition: background-color 0.3s ease;
         }
-        .button:hover {
-            background-color: #45a049;
+        button:hover {
+            background-color: #0056b3;
         }
-        .content {
-            padding: 20px;
-        }
-        .posts, .help, .courses, .partners, .supporters {
-            display: none;
-        }
-        .active {
-            display: block;
-        }
-        .post, .partner, .supporter {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .post img, .supporter img {
+        .canvas-container {
+            margin-top: 30px;
+            position: relative;
             width: 100%;
-            height: auto;
-            border-radius: 8px;
+            background-color: #ffffff;
+            border: 2px solid #007BFF;
+            border-radius: 15px;
+            padding: 20px;
+            box-sizing: border-box;
+            min-height: 350px;
         }
-    .partner img {
-    width: 100px;
-    height: 100px;
-}
-    
-        .post-title, .partner-name, .supporter-name {
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+        .canvas-header {
+            font-size: 24px;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        .canvas-content {
+            font-size: 16px;
+            color: #333;
+        }
+        .alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffcc;
+            padding: 20px;
+            border: 1px solid #ffcc00;
+            border-radius: 10px;
+            text-align: center;
             font-size: 18px;
             font-weight: bold;
+            z-index: 10;
+        }
+        .alert button {
             margin-top: 10px;
-        }
-        .top1 {
-            border: 3px solid gold;
-            box-shadow: 0 0 15px 5px gold;
-        }
-        .top2, .top3 {
-            border: 3px solid #ff66b2;
-            box-shadow: 0 0 15px 5px #ff66b2;
-        }
-        .select-options {
-            display: none;
-            margin-top: 20px;
-            text-align: center;
-        }
-        .select-options select {
-            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
             font-size: 16px;
-            border-radius: 5px;
+            padding: 10px;
             cursor: pointer;
         }
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-        }
-    
-    
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="SmartSelect_20250218_220843_Gallery.png" alt="Foto do Canal" class="profile-image">
-        <h1>Gabrielgamer</h1>
-        <p>Aqui você encontra nossos posts e formas de apoiar o canal!</p>
-    </header>
+<!-- Alerta centralizado -->
+<div class="alert" id="alertDiv">
+    Responda todas as perguntas e depois gere a imagem que aparecer abaixo, feito isso envie a imagem para o dono do servidor do Discord.
+    <br>
+    <button id="okButton" style="display:none;" onclick="fecharAlerta()">Ok</button>
+</div>
 
-    <div class="content">
-        <!-- Container de Botões de Navegação -->
-        <div class="button-container">
-            <button class="button" onclick="showSection('posts')">Posts</button>
-            <button class="button" onclick="showSection('help')">Ajude o Canal</button>
-            <button class="button" onclick="showSection('courses')">Cursos</button>
-            <button class="button" onclick="showSection('partners')">Canais Parceiros</button>
-            <button class="button" onclick="showSection('supporters')">Top dos Apoiadores</button>
-        </div>
+<div class="container">
+    <h1>Matricula</h1>
+    
+    <!-- Campos de Entrada -->
+    <input type="text" id="nome" placeholder="Nome" />
+    <input type="number" id="idade" placeholder="Idade" />
+    <select id="periodo">
+        <option value="manhã">Período disponível: Manhã</option>
+        <option value="tarde">Período disponível: Tarde</option>
+    </select>
+    <input type="text" id="telefone" placeholder="Telefone" />
+    <input type="email" id="email" placeholder="E-mail" />
 
-        <!-- Seções -->
-        <div id="posts" class="posts">
-            <h2>Postagens</h2>
-            <!-- Exemplo de Post -->
-            <div class="post" onclick="showPostOptions('post1')">
-                <img src="Posts/SmartSelect_20250219_002709_Gallery.jpg" alt="Imagem do Post 1">
-                <div class="post-title">Leon com mil troféus! 🏆SKILL ou NO SKILL?</div>
-                <div id="post1" class="select-options">
-                    <select onchange="window.open(this.value, '_blank')">
-                        <option value="">Assistir</option>
-                        <option value="https://vm.tiktok.com/ZMkvJYEqU/">Ver no TikTok</option>
-                        <option value="https://youtube.com/shorts/mwtt97XRCCA?si=BDOiiJ806mo-3E5Z">Ver no YouTube</option>
-                    </select>
-                </div>
-            </div>
-            <!-- Outro Exemplo de Post -->
-            <div class="post" onclick="showPostOptions('post2')">
-                <img src="Posts/SmartSelect_20250218_221719_TikTok.jpg" alt="Imagem do Post 2">
-                <div class="post-title">Comprei o brawl pass Plus por causa de uma skin!?</div>
-                <div id="post2" class="select-options">
-                    <select onchange="window.open(this.value, '_blank')">
-                        <option value="">Assistir</option>
-                        <option value="https://vm.tiktok.com/ZMkv1Efw3/">Ver no TikTok</option>
-                        <option value="https://youtube.com/shorts/-we0FIlVmTc?si=OmStwI1-2AVZgtnH">Ver no YouTube</option>
-                    </select>
-                </div>
-            </div>
-        </div>
+    <!-- Botão -->
+    <button onclick="gerarCurriculo()">Finalizar</button>
 
-        <div id="help" class="help">
-            <h2>Ajude o Canal</h2>
-            <p>Se você gosta do nosso conteúdo, considere ajudar com um PIX de R$0,10</p>
-            <a href="https://nubank.com.br/cobrar/4o0e34/67b5343e-90b6-4800-8c55-24fee4478406" class="button" target="_blank">Fazer um PIX</a>
-        </div>
-
-        <div id="courses" class="courses">
-            <h2>Em breve</h2>
-            <p>Em breve</p>
-            <a href="" class="button" target="_blank">Em breve</a>
-        </div>
-
-        <div id="partners" class="partners">
-            <h2>Canais Parceiros</h2>
-            <!-- Exemplo de Canal Parceiro -->
-            <div class="partner" onclick="showPostOptions('partner1')">
-                <img src="kaique.png" alt="Imagem do Canal Parceiro 1" class="parceiro1">
-                <div class="partner-name">CzKaique</div>
-                <div id="partner1" class="select-options">
-                    <select onchange="window.open(this.value, '_blank')">
-                        <option value="">Visitar</option>
-                        <option value="https://www.tiktok.com/@czkaique?_t=ZM-8u36DAtg5Be&_r=1">Visitar no TikTok</option>
-                        <option value="https://youtube.com/@czkaique?si=cqt1eH0g6Or-VcLy">Visitar no YouTube</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Outro Canal Parceiro -->
-            <div class="partner" onclick="showPostOptions('partner2')">
-                <img src="" alt="Imagem do Canal Parceiro 2">
-                <div class="partner-name">Canal Amigo 2</div>
-                <div id="partner2" class="select-options">
-                    <select onchange="window.open(this.value, '_blank')">
-                        <option value="">Visitar</option>
-                        <option value="">Visitar no TikTok</option>
-                        <option value="">Visitar no YouTube</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <!-- Nova seção de Top dos Apoiadores -->
-        <div id="supporters" class="supporters">
-            <h2>Top dos Apoiadores de live</h2>
-
-            <!-- Exemplo de Apoio 1 (Top 1 com contorno dourado brilhante) -->
-            <div class="supporter top1" onclick="showPostOptions('supporter1')">
-                <img src="supporter1.jpg" alt="Imagem do Apoio 1">
-                <div class="supporter-name">Apoiador #1</div>
-                <div id="supporter1" class="select-options">
-                    <select onchange="window.open(this.value, '_blank')">
-                        <option value="">Visitar</option>
-                        <option value="">Visitar no TikTok</option>
-                        <option value="">Visitar no YouTube</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Exemplo de Apoio 2 (Top 2 com contorno vermelho/rosa) -->
-            <div class="supporter top2" onclick="showPostOptions('supporter2')">
-                <img src="supporter2.jpg" alt="Imagem do Apoio 2">
-                <div class="supporter-name">Apoiador #2</div>
-                <div id="supporter2" class="select-options">
-                    <select onchange="window.open(this.value, '_blank')">
-                        <option value="">Visitar</option>
-                        <option value="">Visitar no TikTok</option>
-                        <option value="">Visitar no YouTube</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Exemplo de Apoio 3 (Top 3 com contorno vermelho/rosa) -->
-            <div class="supporter top3" onclick="showPostOptions('supporter3')">
-                <img src="supporter3.jpg" alt="Imagem do Apoio 3">
-                <div class="supporter-name">Apoiador #3</div>
-                <div id="supporter3" class="select-options">
-                    <select onchange="window.open(this.value, '_blank')">
-                        <option value="">Visitar</option>
-                        <option value="">Visitar no TikTok</option>
-                        <option value="">Visitar no YouTube</option>
-                    </select>
-                </div>
-            </div>
-        </div>
+    <!-- Canvas para exibir o currículo -->
+    <div class="canvas-container">
+        <canvas id="canvas"></canvas>
     </div>
 
-    <div class="footer">
-        <p>&copy; 2025 Página do Canal</p>
-    </div>
+    <!-- Botão para Baixar a Imagem -->
+    <button id="btnBaixar" style="display: none;" onclick="baixarImagem()">Baixar Imagem</button>
+</div>
 
-    <script>
-        // Função para mostrar e ocultar seções
-        function showSection(section) {
-            // Ocultar todas as seções
-            var sections = document.querySelectorAll('.posts, .help, .courses, .partners, .supporters');
-            sections.forEach(function(sec) {
-                sec.classList.remove('active');
-            });
-            // Mostrar a seção clicada
-            document.getElementById(section).classList.add('active');
+<script>
+    // Função para gerar o currículo
+    function gerarCurriculo() {
+        var nome = document.getElementById('nome').value;
+        var idade = document.getElementById('idade').value;
+        var periodo = document.getElementById('periodo').value;
+        var telefone = document.getElementById('telefone').value;
+        var email = document.getElementById('email').value;
+
+        // Validação simples para garantir que todos os campos estão preenchidos
+        if (!nome || !idade || !periodo || !telefone || !email) {
+            alert("Por favor, preencha todos os campos!");
+            return;
         }
 
-        // Função para mostrar as opções de um post
-        function showPostOptions(postId) {
-            var postOptions = document.getElementById(postId);
-            postOptions.style.display = 'block';  // Exibe as opções de visualização
-        }
+        // Configurações do Canvas
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        canvas.width = 420;
+        canvas.height = 350;
 
-        // Mostrar a seção inicial (Posts)
-        showSection('posts');
-    </script>
+        // Limpar o canvas antes de desenhar
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Fundo azul claro
+        ctx.fillStyle = '#E6F2FF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Borda azul escura
+        ctx.strokeStyle = '#0056b3';
+        ctx.lineWidth = 4;
+        ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+
+        // Título do currículo
+        ctx.fillStyle = '#007BFF';
+        ctx.font = '24px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('Informações do aluno', canvas.width / 2, 40);
+
+        // Detalhes do currículo
+        ctx.fillStyle = '#333';
+        ctx.font = '16px Arial';
+        ctx.textAlign = 'left';
+
+        ctx.fillText('Nome: ' + nome, 20, 80);
+        ctx.fillText('Idade: ' + idade, 20, 120);
+        ctx.fillText('Período: ' + periodo, 20, 160);
+        ctx.fillText('Telefone: ' + telefone, 20, 200);
+        ctx.fillText('E-mail: ' + email, 20, 240);
+
+        // Exibir o botão de download
+        document.getElementById('btnBaixar').style.display = 'block';
+    }
+
+    // Função para baixar a imagem e redirecionar para o Discord
+    function baixarImagem() {
+        // Redireciona para o link do Discord
+        window.location.href = "https://discord.com/channels/1338705614997815440/1338710368079581264";
+        
+        // Faz o download da imagem
+        var canvas = document.getElementById('canvas');
+        var imagem = canvas.toDataURL("image/png");
+
+        var link = document.createElement('a');
+        link.href = imagem;
+        link.download = 'curriculo.png';  // Nome do arquivo a ser baixado
+        link.click();
+    }
+
+    // Função para fechar o alerta após 3 segundos
+    function fecharAlerta() {
+        document.getElementById('alertDiv').style.display = 'none';
+    }
+
+    // Exibe o botão "Ok" após 3 segundos
+    setTimeout(function() {
+        document.getElementById('okButton').style.display = 'block';
+    }, 3000);
+</script>
 
 </body>
 </html>
