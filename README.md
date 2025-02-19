@@ -1,2 +1,1 @@
-# Site-do-Canal
-Confira as novidades
+https://gabrielprime500.github.io/main.html
