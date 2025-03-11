@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendas de Gift Cards - A Experiência Incrível</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #1f1c2c, #928DAB);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            animation: background-animation 10s ease-in-out infinite;
+            
+        }
+
+        @keyframes background-animation {
+            0% { background: linear-gradient(to right, #1f1c2c, #928DAB); }
+            50% { background: linear-gradient(to right, #FF5F6D, #FFC371); }
+            100% { background: linear-gradient(to right, #1f1c2c, #928DAB); }
+        }
+
+        h1, h2 {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .gift-card {
+            display: inline-block;
+            width: 300px;
+            margin: 20px;
+            padding: 30px;
+            background: #333;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: card-animation 1.5s ease-in-out infinite;
+        }
+
+        @keyframes card-animation {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .gift-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .gift-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .gift-card h3 {
+            margin: 20px 0;
+            font-size: 24px;
+            color: #FFD700;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+
+        .button {
+            background: linear-gradient(135deg, #FF5F6D, #FFC371);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 18px;
+            color: #fff;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 100, 100, 0.5);
+        }
+
+        .button:active {
+            transform: translateY(2px);
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: #FFD700;
+            text-align: center;
+            margin-top: 50px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        footer {
+    background: #111;
+    color: #fff;
+    padding: 3,50px;
+    text-align: center;
+    font-size: 13px;
+        bottom: 0;
+    left: 0;
+    width: 100%;  /* Faz o footer ter 100% da largura da tela */
+       height: 50px;     
+        }
+
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .header {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 40px;
+            color: #FFD700;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+        }
+
+        .gift-cards-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        /* Estilo da div de formulário */
+        .form-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-container input, .form-container button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .form-container button {
+            background-color: #FF5F6D;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #FFC371;
+        }
+
+        /* Estilo do botão cancelar */
+        .cancel-btn {
+            background-color: #444;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .cancel-btn:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="header">Gift Cards Exclusivos</h1>
+        <h2>Escolha seu Gift Card Lendário!</h2>
+        
+        <div class="gift-cards-container">
+            <div class="gift-card" data-price="15,00">
+                <img src="giftCardImg.jpg" alt="Gift Card 100">
+                <h3>Gift Card R$15,00</h3>
+                <p class="price">R$ 14,55</p>
+                <button class="button">Comprar Agora</button>
+            </div>
+
+            <div class="gift-card" data-price="25">
+                <img src="giftCardImg.jpg" alt="Gift Card 200">
+                <h3>Gift Card R$25</h3>
+                <p class="price">R$ 24,25</p>
+                <button class="button">Comprar Agora</button>
+            </div>
+
+            <div class="gift-card" data-price="100">
+                <img src="giftCardImg.jpg" alt="Gift Card 500">
+                <h3>Gift Card R$100</h3>
+                <p class="price">R$ 97,00</p>
+                <button class="button">Comprar Agora</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Div de formulário para o nome e Gmail -->
+    <div class="form-container" id="form-container">
+        <h3>Complete seus dados</h3>
+        <form id="email-form">
+            <input type="text" id="name" placeholder="Seu Nome" required>
+            <input type="email" id="email" placeholder="Seu Gmail" required>
+            <input type="hidden" id="price" value="">
+            <button type="submit" id="sendEmail">Enviar</button>
+            <button type="button" class="cancel-btn" id="cancelButton">Cancelar</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Gift Cards Shop | Todos os direitos reservados | <a href="termos.html">Termos de Serviço</a> | <a href="privacidade.html">Privacidade</a></p>
+    </footer>
+
+    <script>
+  alert('ATENÇÃO! Deslize até o final da página e leia os termos de serviços para saber como fazer a compra.');
+    alerta('Os gift cards são apenas da play store, e não funciana em Iphone.')
+       // Função que abre a div com o formulário
+        const buttons = document.querySelectorAll('.gift-card button');
+        const formContainer = document.getElementById('form-container');
+        const priceInput = document.getElementById('price');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const price = this.parentElement.getAttribute('data-price');
+                //nome do item
+                priceInput.value = `Gift Card R$${price}`;
+                formContainer.style.display = 'block';
+            });
+        });
+
+        // Função para criar o link mailto e abrir o cliente de e-mail
+        document.getElementById('email-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const price = priceInput.value;
+
+            const mailtoLink = `mailto:sparkystudio.projetos@gmail.com?subject=Compra%20Gift%20Card&body=Nome:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0AItem:%20${encodeURIComponent(price)}%20(Você%20pagará%20o%20valor%20com%20desconto.%20Poderá%20conferir%20o%20valor%20durante%20a%20transferência.)`;
+            // Abre o cliente de e-mail
+            window.location.href = mailtoLink;
+
+            // Fecha o formulário após enviar
+            formContainer.style.display = 'none';
+        });
+
+        // Função para fechar a div ao clicar em "Cancelar"
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            formContainer.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
