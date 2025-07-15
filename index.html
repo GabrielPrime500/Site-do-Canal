@@ -371,9 +371,25 @@
   <a href="https://www.instagram.com/gabriel500gamer?igsh=MTU4aXdzZ2NhZDhrbA==" target="_blank" class="bonus-button instagram">
     <i class="fab fa-instagram"></i> Instagram
   </a>
-        <a href="https://www.roblox.com/share?code=8c2ebda7dc6f3f42a376b131582a4953&type=Server" target="_blank" class="bonus-button instagram">
-    <i class="fab fa-game"></i> 🎮Roblox🎮
-  </a>  
+        <a href="#" class="bonus-button" onclick="abrirRoblox(event)">
+    🎮 Roblox 🎮
+  </a>
+
+  <script>
+    function abrirRoblox(e) {
+      e.preventDefault(); // impede que '#' seja seguido
+      const link = 'https://www.roblox.com/share?code=baa46131e28255458495bef486ae93e9&type=Server';
+      window.open(link, '_blank');
+    }
+
+    // Bloqueia o botão direito sobre o link
+    document.addEventListener('contextmenu', function(e) {
+      if (e.target.closest('.bonus-button')) {
+        e.preventDefault();
+      }
+    });
+  </script>
+
 </div>
      
            <br>
