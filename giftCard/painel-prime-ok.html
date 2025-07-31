@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>Painel de Pagamentos</title>
+  <title>Painel</title>
   <style>
     body {
       font-family: sans-serif;
@@ -12,14 +12,13 @@
     }
     table {
       width: 100%;
+      background: #222;
       border-collapse: collapse;
       margin-top: 20px;
-      background: #222;
     }
     th, td {
       border: 1px solid #444;
       padding: 10px;
-      text-align: left;
     }
     th {
       background: #333;
@@ -27,8 +26,8 @@
   </style>
 </head>
 <body>
-  <h2>Pagamentos Recebidos</h2>
-  <table id="tabela">
+  <h2>Painel de Respostas</h2>
+  <table>
     <thead>
       <tr>
         <th>E-mail</th>
@@ -36,48 +35,48 @@
         <th>Data</th>
       </tr>
     </thead>
-    <tbody></tbody>
+    <tbody id="respostas"></tbody>
   </table>
 
   <script>
+    // Proteção por login simples
     if (sessionStorage.getItem("logado") !== "sim") {
       window.location.href = "login.html";
     }
   </script>
 
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
-  <script>
     const firebaseConfig = {
-      apiKey: "AIzaSyCBBtyl8IzOXCSzevKTu_jFEGRZ6BI77XQ",
-      authDomain: "monitor-prime.firebaseapp.com",
-      projectId: "monitor-prime",
-      storageBucket: "monitor-prime.firebasestorage.app",
-      messagingSenderId: "776677628623",
-      appId: "1:776677628623:web:038cbee4cb6cd7de0f35ba",
-      measurementId: "G-6PHJR21FXB",
-      databaseURL: "https://monitor-prime-default-rtdb.firebaseio.com"
+      apiKey: "AIzaSyDb4UDM1MrXh1XPkn14AsoygV_OxawUais",
+      authDomain: "monitor-acd3e.firebaseapp.com",
+      projectId: "monitor-acd3e",
+      storageBucket: "monitor-acd3e.firebasestorage.app",
+      messagingSenderId: "998631495042",
+      appId: "1:998631495042:web:d43648c9568a547e2d2b9b",
+      databaseURL: "https://monitor-acd3e-default-rtdb.firebaseio.com"
     };
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
 
-    const tbody = document.querySelector("#tabela tbody");
+    const respostas = document.getElementById("respostas");
 
-    db.ref("pagamentos").on("value", (snapshot) => {
-      tbody.innerHTML = "";
+    const pagamentosRef = ref(database, "pagamentos");
 
-      snapshot.forEach((child) => {
-        const dado = child.val();
-
+    onValue(pagamentosRef, (snapshot) => {
+      respostas.innerHTML = "";
+      snapshot.forEach((childSnapshot) => {
+        const dado = childSnapshot.val();
         const tr = document.createElement("tr");
         tr.innerHTML = `
           <td>${dado.email || "-"}</td>
           <td>R$ ${dado.preco || "-"}</td>
           <td>${dado.data || "-"}</td>
         `;
-        tbody.appendChild(tr);
+        respostas.appendChild(tr);
       });
     });
   </script>
