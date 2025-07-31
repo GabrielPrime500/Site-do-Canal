@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel de Pagamentos</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: #222;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>Painel de Pagamentos</h2>
+  <table id="tabela">
+    <thead>
+      <tr>
+        <th>E-mail</th>
+        <th>Valor</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    if (sessionStorage.getItem("logado") !== "sim") {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCBBtyl8IzOXCSzevKTu_jFEGRZ6BI77XQ",
+      authDomain: "monitor-prime.firebaseapp.com",
+      projectId: "monitor-prime",
+      storageBucket: "monitor-prime.firebasestorage.app",
+      messagingSenderId: "776677628623",
+      appId: "1:776677628623:web:038cbee4cb6cd7de0f35ba",
+      measurementId: "G-6PHJR21FXB",
+      databaseURL: "https://monitor-prime-default-rtdb.firebaseio.com"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    const tbody = document.querySelector("#tabela tbody");
+
+    db.ref("pagamentos").on("value", (snapshot) => {
+      tbody.innerHTML = "";
+      snapshot.forEach((child) => {
+        const dado = child.val();
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${dado.email || "-"}</td>
+          <td>R$ ${dado.preco || "-"}</td>
+          <td>${dado.data || "-"}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    });
+  </script>
+</body>
+</html>
