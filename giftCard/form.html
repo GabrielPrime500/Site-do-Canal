@@ -2,14 +2,14 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Formulário de Pagamento</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulário</title>
 </head>
 <body>
   <h2>Preencha as informações</h2>
   <form id="paymentForm">
-    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required />
-    <select id="preco" name="preco" required>
+    <input type="email" id="email" placeholder="Digite seu e-mail" required />
+    <select id="preco" required>
       <option value="">Selecione um valor</option>
       <option value="15">R$15</option>
       <option value="20">R$20</option>
@@ -19,40 +19,30 @@
     <p id="mensagem"></p>
   </form>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
-  <script>
-    // Config Firebase (inclui databaseURL)
     const firebaseConfig = {
-      apiKey: "AIzaSyCBBtyl8IzOXCSzevKTu_jFEGRZ6BI77XQ",
-      authDomain: "monitor-prime.firebaseapp.com",
-      projectId: "monitor-prime",
-      storageBucket: "monitor-prime.firebasestorage.app",
-      messagingSenderId: "776677628623",
-      appId: "1:776677628623:web:038cbee4cb6cd7de0f35ba",
-      measurementId: "G-6PHJR21FXB",
-      databaseURL: "https://monitor-prime-default-rtdb.firebaseio.com"
+      apiKey: "AIzaSyDb4UDM1MrXh1XPkn14AsoygV_OxawUais",
+      authDomain: "monitor-acd3e.firebaseapp.com",
+      projectId: "monitor-acd3e",
+      storageBucket: "monitor-acd3e.firebasestorage.app",
+      messagingSenderId: "998631495042",
+      appId: "1:998631495042:web:d43648c9568a547e2d2b9b",
+      databaseURL: "https://monitor-acd3e-default-rtdb.firebaseio.com"
     };
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
 
     const form = document.getElementById("paymentForm");
     const mensagem = document.getElementById("mensagem");
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-
       const email = document.getElementById("email").value;
       const preco = document.getElementById("preco").value;
-
-      if (!email || !preco) {
-        mensagem.textContent = "Preencha todos os campos!";
-        mensagem.style.color = "red";
-        return;
-      }
 
       const dados = {
         email,
@@ -60,18 +50,16 @@
         data: new Date().toLocaleString()
       };
 
-      db.ref("pagamentos")
-        .push(dados)
-        .then(() => {
-          mensagem.textContent = "Enviado com sucesso!";
-          mensagem.style.color = "green";
-          form.reset();
-        })
-        .catch((error) => {
-          mensagem.textContent = "Erro ao enviar, tente novamente.";
-          mensagem.style.color = "red";
-          console.error(error);
-        });
+      try {
+        await push(ref(database, "pagamentos"), dados);
+        mensagem.textContent = "Enviado com sucesso!";
+        mensagem.style.color = "green";
+        form.reset();
+      } catch (error) {
+        console.error(error);
+        mensagem.textContent = "Erro ao enviar!";
+        mensagem.style.color = "red";
+      }
     });
   </script>
 </body>
