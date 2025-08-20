@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu LinkPage</title>
+  <style>
+    /* Reset básico */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100dvh; /* altura dinâmica para mobile */
+      width: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(to top, #5a00ff, #000111);
+      background-repeat: no-repeat;
+      background-size: cover; /* cobre toda a tela */
+      font-family: 'Orbitron', Arial, sans-serif;
+    }
+
+    /* Container principal centralizado */
+    .container {
+      flex: 1; /* ocupa todo o espaço disponível */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    /* Título */
+    .Titulo {
+      font-size: 35px;
+      margin: 10px 0;
+    }
+
+    /* Imagem de perfil */
+    .profile-img {
+      width: 97px;
+      height: 97px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+        transform: translate(0%, 20px);
+        
+    }
+
+    /* Botões */
+    .btn {
+      display: block;
+      width: 200px;
+      margin: 10px auto;
+      padding: 12px;
+      background: white;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 25px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #ddd;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: white;
+        background-color: black;
+    }
+
+    /* Estilo para landscape (horizontal) */
+    @media (orientation: landscape) {
+      body {
+        background: linear-gradient(to right, #5a00ff, #000111);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="kaique.png" alt="Foto de Perfil" class="profile-img">
+    <h1 class="Titulo">CzKaique</h1>
+
+    <a href="#" class="btn">LivePix</a>
+    <a href="#" class="btn">YouTube</a>
+    <a href="#" class="btn">TikTok</a>
+    <a href="#" class="btn">Kwai</a>
+    <a href="#" class="btn">Instagram</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Gameverse Pro. Todos os direitos reservados. Desenvolvido com paixão gamer.</p>
+    <p><a href="privacy.html" style="color: #C8A2C8">Política de Privacidade</a></p>
+  </footer>
+</body>
+</html>
