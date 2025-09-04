@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enviar Mensagem para WhatsApp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .contact {
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .contact:hover {
+      background: #f0f0f0;
+    }
+    .selected {
+      background: #d1ffd1;
+      border-color: #2ecc71;
+    }
+  </style>
+</head>
+<body>
+  <h2>Selecione o contato:</h2>
+
+  <!-- Contatos -->
+  <div class="contact" data-phone="554797816143">Alann (1)</div>
+  <div class="contact" data-phone="554799943334">Allan Saturnino(2)</div>
+  <div class="contact" data-phone="5514997525681">Andre Filho (3)</div>
+ <div class="contact" data-phone="554799994442">Andre Maio (4)</div>
+  <div class="contact" data-phone="554799880664">Andre Natureza (5)</div>
+  <div class="contact" data-phone="554796540852">Andre Sapo (6)</div>
+ <div class="contact" data-phone="554799313010">Andreas Merz(7)</div>
+  <div class="contact" data-phone="554797812051">Andres Japa (8)</div>
+  <div class="contact" data-phone="554799644742">Baga (9)</div>
+ <div class="contact" data-phone="5514997813536">Banca central (10)</div>
+  <div class="contact" data-phone="554399534283">BC (11)</div>
+  <div class="contact" data-phone="554791380023">BE Papai(12)</div>
+ <div class="contact" data-phone="554599410664">BE Tibia Torado(13)</div>
+  <div class="contact" data-phone="554733485420">Bibusky (14)</div>
+  <div class="contact" data-phone="554791392934">BigDog (15)</div>
+ <div class="contact" data-phone="554796910002">BigDog vila (16)</div>
+  <div class="contact" data-phone="554791060864">Biriba Teatro (17)</div>
+  <div class="contact" data-phone="554796120009">Bruneca (18)</div>
+ <div class="contact" data-phone="554799980050">Bruno Piske (19)</div>
+  <div class="contact" data-phone="554799685225">Cadu Primo (20)</div>
+  <div class="contact" data-phone="554799131276">Kaio Amigo Dudu (21)</div>
+ <div class="contact" data-phone="554799186326">Carlos Cangin (22)</div>
+  <div class="contact" data-phone="554396419861">Carol Gabi (23)</div>
+  <div class="contact" data-phone="554797369863">Carol Particular (24)</div>
+ <div class="contact" data-phone="554784833376">Carol Forciuncola (25)</div>
+  <div class="contact" data-phone="554796183925">Casa Pizza (26)</div>
+  <div class="contact" data-phone="554796632022">César Herbalife (27)</div>
+ <div class="contact" data-phone="554799870856">Cesar Sindicato (28)</div>
+  <div class="contact" data-phone="554396245902">Chardome (29)</div>
+  <div class="contact" data-phone="554784430084">Claudia (30)</div>
+ <div class="contact" data-phone="556699865746">Cleo Takemori Japatakez (31)</div>
+  <div class="contact" data-phone="554799991693">Crazy Bruno Novo (32)</div>
+  <div class="contact" data-phone="554797307430">Cueca (WhatsApp)</div>
+ <div class="contact" data-phone="554792208252">Dan Novo (WhatsApp)</div>
+  <div class="contact" data-phone="554797551987">Dan Vicente (WhatsApp)</div>
+  <div class="contact" data-phone="554792216756">Daniel Loco (WhatsApp)</div>
+ <div class="contact" data-phone=""> (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+ <div class="contact" data-phone="">Kaique (WhatsApp)</div>
+  <div class="contact" data-phone="">Jão (WhatsApp)</div>
+  <div class="contact" data-phone="">João (WhatsApp)</div>
+
+    
+    
+    
+  <br>
+  <label for="inputField">Digite sua mensagem:</label><br>
+  <input type="text" id="inputField" placeholder="Escreva aqui...">
+  <button id="submitButton">Enviar</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      let selectedContact = null;
+
+      // Pegar todas as divs de contato
+      const contacts = document.querySelectorAll('.contact');
+      
+      contacts.forEach(contact => {
+        contact.addEventListener('click', function() {
+          // Remove seleção de todos
+          contacts.forEach(c => c.classList.remove('selected'));
+          
+          // Marca o clicado como selecionado
+          this.classList.add('selected');
+          selectedContact = this.getAttribute('data-phone');
+        });
+      });
+
+      // Botão enviar
+      document.getElementById('submitButton').addEventListener('click', function() {
+        const inputValue = document.getElementById('inputField').value.trim();
+
+        if (!selectedContact) {
+          alert("Por favor, selecione um contato antes de enviar!");
+          return;
+        }
+
+        if (!inputValue) {
+          alert("Digite uma mensagem antes de enviar!");
+          return;
+        }
+
+        const whatsappUrl = `https://wa.me/${selectedContact}?text=${encodeURIComponent(inputValue)}`;
+        window.open(whatsappUrl, '_blank');
+      });
+    });
+  </script>
+</body>
+</html>
