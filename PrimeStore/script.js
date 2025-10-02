@@ -97,3 +97,36 @@ function filtrarProdutos() {
     card.style.display = mostrar ? "flex" : "none";
   });
 }
+
+function filtrarProdutos() {
+  let texto = searchInput.value.toLowerCase();
+  let categoria = categoriaSelect.value;
+  let cards = document.querySelectorAll(".card");
+  let titulosSecao = document.querySelectorAll(".titulo-secao");
+  let resultados = 0;
+
+  cards.forEach(card => {
+    let titulo = card.querySelector("h4").innerText.toLowerCase();
+    let tagCategoria = card.querySelector("p").innerText.toLowerCase();
+
+    let mostrar = false;
+
+    if (categoria === "geral") {
+      mostrar = titulo.includes(texto);
+    } else {
+      mostrar = titulo.includes(texto) && tagCategoria.includes(categoria);
+    }
+
+    if (mostrar) resultados++;
+    card.style.display = mostrar ? "flex" : "none";
+  });
+
+  // Oculta os h4 de seção só durante a pesquisa (quando tem texto digitado)
+  titulosSecao.forEach(h4 => {
+    if (texto !== "") {
+      h4.style.display = "none";
+    } else {
+      h4.style.display = "block";
+    }
+  });
+}
