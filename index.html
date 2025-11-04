@@ -2,39 +2,33 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Notificação ao clicar 5 vezes</title>
+<title>Notificação</title>
 </head>
 <body>
-<h1>Clique na tela 5 vezes para receber uma notificação</h1>
+<h1>Clique no botão 5 vezes para receber uma notificação</h1>
+<button id="btnClick">Clique aqui</button>
 
 <script>
-// Contador de cliques
 let contador = 0;
 
-// Função para enviar a notificação
-function enviarNotificacao() {
-    // Verifica se o navegador suporta notificações
-    if (!("Notification" in window)) {
-        alert("Seu navegador não suporta notificações.");
-        return;
-    }
+const botao = document.getElementById("btnClick");
 
-    // Pede permissão
-    Notification.requestPermission().then(permission => {
-        if (permission === "granted") {
-            new Notification("oi");
-        } else {
-            alert("Permissão de notificação negada.");
-        }
-    });
-}
-
-// Evento de clique na tela
-document.addEventListener("click", () => {
+botao.addEventListener("click", () => {
     contador++;
     if (contador === 5) {
-        enviarNotificacao();
-        contador = 0; // Reinicia o contador
+        // Pede permissão e envia a notificação
+        if (!("Notification" in window)) {
+            alert("Seu navegador não suporta notificações.");
+        } else {
+            Notification.requestPermission().then(permission => {
+                if (permission === "granted") {
+                    new Notification("oi");
+                } else {
+                    alert("Permissão negada.");
+                }
+            });
+        }
+        contador = 0; // Reinicia contador
     }
 });
 </script>
