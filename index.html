@@ -5,35 +5,30 @@
 <title>Notificação no celular</title>
 </head>
 <body>
-<h1>Clique no botão 5 vezes para receber uma notificação</h1>
-<button id="btnClick">Clique aqui</button>
+<h1>Permissão e notificação</h1>
+<button id="btnNotificar">Enviar notificação</button>
 
 <script>
-let contador = 0;
-const botao = document.getElementById("btnClick");
-
-// Função que envia a notificação
-function enviarNotificacao() {
-    if (!("Notification" in window)) {
-        alert("Seu navegador não suporta notificações.");
-        return;
-    }
-
+// Pede permissão assim que a página carrega
+if ("Notification" in window) {
     Notification.requestPermission().then(permission => {
         if (permission === "granted") {
-            new Notification("oi");
+            console.log("Permissão concedida para notificações!");
         } else {
-            alert("Permissão negada.");
+            console.log("Permissão negada.");
         }
     });
+} else {
+    alert("Seu navegador não suporta notificações.");
 }
 
-// Contador de cliques no botão
+// Botão para enviar notificação
+const botao = document.getElementById("btnNotificar");
 botao.addEventListener("click", () => {
-    contador++;
-    if (contador === 5) {
-        enviarNotificacao();
-        contador = 0; // reinicia o contador
+    if (Notification.permission === "granted") {
+        new Notification("oi");
+    } else {
+        alert("Você ainda não deu permissão para notificações.");
     }
 });
 </script>
