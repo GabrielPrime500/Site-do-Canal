@@ -1,6 +1,6 @@
 // Import Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
 // Config do Firebase
@@ -52,7 +52,7 @@ registerBtn.addEventListener("click", async () => {
 // Logout
 logoutBtn.addEventListener("click", () => signOut(auth));
 
-// Criar post
+// Criar post (só logado)
 createPostBtn.addEventListener("click", async () => {
   const title = document.getElementById("post-title").value;
   const desc = document.getElementById("post-desc").value;
@@ -67,16 +67,20 @@ createPostBtn.addEventListener("click", async () => {
       imageUrl: img,
       createdAt: new Date()
     });
+    document.getElementById("post-title").value = "";
+    document.getElementById("post-desc").value = "";
+    document.getElementById("post-img").value = "";
     loadPosts();
   } catch(e) {
     alert("Erro ao criar post: " + e.message);
   }
 });
 
-// Carregar posts
+// Carregar posts em ordem do mais recente
 async function loadPosts() {
   postsContainer.innerHTML = "";
-  const querySnapshot = await getDocs(collection(db, "posts"));
+  const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+  const querySnapshot = await getDocs(q);
   querySnapshot.forEach(doc => {
     const data = doc.data();
     const postDiv = document.createElement("div");
