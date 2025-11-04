@@ -5,30 +5,37 @@
 <title>Notificação no celular</title>
 </head>
 <body>
-<h1>Permissão e notificação</h1>
-<button id="btnNotificar">Enviar notificação</button>
+<h1>Notificação no celular</h1>
+<button id="btnPermissao">Pedir permissão</button>
+<button id="btnNotificar" disabled>Enviar notificação</button>
 
 <script>
-// Pede permissão assim que a página carrega
-if ("Notification" in window) {
+const btnPermissao = document.getElementById("btnPermissao");
+const btnNotificar = document.getElementById("btnNotificar");
+
+// Botão para pedir permissão
+btnPermissao.addEventListener("click", () => {
+    if (!("Notification" in window)) {
+        alert("Seu navegador não suporta notificações.");
+        return;
+    }
+
     Notification.requestPermission().then(permission => {
         if (permission === "granted") {
-            console.log("Permissão concedida para notificações!");
+            alert("Permissão concedida!");
+            btnNotificar.disabled = false; // Habilita botão de enviar notificação
         } else {
-            console.log("Permissão negada.");
+            alert("Permissão negada.");
         }
     });
-} else {
-    alert("Seu navegador não suporta notificações.");
-}
+});
 
-// Botão para enviar notificação
-const botao = document.getElementById("btnNotificar");
-botao.addEventListener("click", () => {
+// Botão para enviar a notificação
+btnNotificar.addEventListener("click", () => {
     if (Notification.permission === "granted") {
         new Notification("oi");
     } else {
-        alert("Você ainda não deu permissão para notificações.");
+        alert("Você não deu permissão para notificações.");
     }
 });
 </script>
