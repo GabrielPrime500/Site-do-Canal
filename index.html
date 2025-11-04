@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Notificação</title>
+<title>Notificação no celular</title>
 </head>
 <body>
 <h1>Clique no botão 5 vezes para receber uma notificação</h1>
@@ -10,25 +10,30 @@
 
 <script>
 let contador = 0;
-
 const botao = document.getElementById("btnClick");
 
+// Função que envia a notificação
+function enviarNotificacao() {
+    if (!("Notification" in window)) {
+        alert("Seu navegador não suporta notificações.");
+        return;
+    }
+
+    Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+            new Notification("oi");
+        } else {
+            alert("Permissão negada.");
+        }
+    });
+}
+
+// Contador de cliques no botão
 botao.addEventListener("click", () => {
     contador++;
     if (contador === 5) {
-        // Pede permissão e envia a notificação
-        if (!("Notification" in window)) {
-            alert("Seu navegador não suporta notificações.");
-        } else {
-            Notification.requestPermission().then(permission => {
-                if (permission === "granted") {
-                    new Notification("oi");
-                } else {
-                    alert("Permissão negada.");
-                }
-            });
-        }
-        contador = 0; // Reinicia contador
+        enviarNotificacao();
+        contador = 0; // reinicia o contador
     }
 });
 </script>
