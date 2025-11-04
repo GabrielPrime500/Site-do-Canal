@@ -159,16 +159,17 @@
     const videoInput = document.getElementById('videoInput');
     const carousel = document.getElementById('carousel');
 
-    // Solicitar permissão de notificação
-    if ('Notification' in window) {
-      if (Notification.permission === 'default') {
+    // Solicita permissão de notificação
+    function requestNotificationPermission() {
+      if ('Notification' in window && Notification.permission === 'default') {
         Notification.requestPermission();
       }
     }
 
+    // Mostra a notificação
     function showNotification(message) {
-      if (Notification.permission === 'granted') {
-        new Notification('Novo Post!', { body: message, icon: '' });
+      if ('Notification' in window && Notification.permission === 'granted') {
+        new Notification('Novo Post!', { body: message });
       }
     }
 
@@ -226,9 +227,6 @@
         const allPosts = getAllPostsData();
         allPosts.push(postData);
         savePosts(allPosts);
-
-        // Notificação ao postar
-        showNotification(`${postData.type === 'video' ? 'Vídeo' : 'Foto'} postado com sucesso!`);
       }
     }
 
@@ -254,6 +252,10 @@
         alert('Preencha título e descrição antes de postar!');
         return;
       }
+
+      // Dispara notificação imediatamente após clique do usuário
+      showNotification(type === 'video' ? 'Vídeo postado com sucesso!' : 'Foto postada com sucesso!');
+
       const reader = new FileReader();
       reader.onload = function(e) {
         const postData = {
@@ -271,15 +273,22 @@
       reader.readAsDataURL(file);
     }
 
+    // Eventos de upload
     photoInput.addEventListener('change', function() {
       const file = this.files[0];
-      if(file) addPost(file, 'image');
+      if(file) {
+        requestNotificationPermission();
+        addPost(file, 'image');
+      }
       this.value = '';
     });
 
     videoInput.addEventListener('change', function() {
       const file = this.files[0];
-      if(file) addPost(file, 'video');
+      if(file) {
+        requestNotificationPermission();
+        addPost(file, 'video');
+      }
       this.value = '';
     });
 
