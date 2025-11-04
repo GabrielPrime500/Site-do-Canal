@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Firebase</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Firebase -->
   <script type="module" src="app.js" defer></script>
 </head>
 <body>
@@ -14,7 +13,9 @@
     <input type="email" id="login-email" placeholder="Email">
     <input type="password" id="login-password" placeholder="Senha">
     <button id="login-btn">Entrar</button>
+
     <h3>ou</h3>
+
     <h2>Cadastro</h2>
     <input type="email" id="register-email" placeholder="Email">
     <input type="password" id="register-password" placeholder="Senha">
@@ -23,11 +24,14 @@
 
   <div id="blog-section" style="display:none;">
     <button id="logout-btn">Sair</button>
-    <h2>Criar Post</h2>
-    <input type="text" id="post-title" placeholder="Título">
-    <textarea id="post-desc" placeholder="Descrição"></textarea>
-    <input type="text" id="post-img" placeholder="URL da imagem">
-    <button id="create-post-btn">Criar Post</button>
+
+    <div id="create-post-container">
+      <h2>Criar Post</h2>
+      <input type="text" id="post-title" placeholder="Título">
+      <textarea id="post-desc" placeholder="Descrição"></textarea>
+      <input type="text" id="post-img" placeholder="URL da imagem">
+      <button id="create-post-btn">Criar Post</button>
+    </div>
 
     <h2>Posts</h2>
     <div id="posts-container"></div>
