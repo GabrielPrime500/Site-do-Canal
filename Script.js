@@ -68,3 +68,22 @@ function mostrar(id) {
   });
   document.getElementById(id).classList.add('ativo');
 }
+
+// Adiciona um listener para duplo clique na tela
+document.addEventListener("dblclick", () => {
+    // Verifica se o navegador suporta notificações
+    if (!("Notification" in window)) {
+        alert("Este navegador não suporta notificações.");
+        return;
+    }
+
+    // Pede permissão para enviar notificações
+    Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+            // Cria e mostra a notificação
+            new Notification("Gabriel mandou oi!");
+        } else {
+            alert("Você não permitiu notificações.");
+        }
+    });
+});
