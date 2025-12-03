@@ -6,7 +6,21 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
   <style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+#app {
+  flex: 1; /* força o conteúdo a empurrar o footer para baixo */
+}
+    
     body {
+display: flex;
+  flex-direction: column;
+      
       margin: 0;
       padding: 0;
       background: url('4.jpg') no-repeat center center/cover;
