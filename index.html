@@ -14,8 +14,21 @@
 }
 
 body {
-  background: url('4.jpg') no-repeat center center fixed;
-  background-size: cover;
+  margin: 0;
+  padding: 0;
+  background: none; /* remove o fundo bugado */
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;       /* fundo fixo real */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('4.jpg') no-repeat center center / cover;
+  z-index: -1;           /* fica atrás de tudo */
 }
 
     /* O APP vira o "container principal" */
