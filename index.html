@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Página Vue Leve</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('4.jpg') no-repeat center center/cover;
+      font-family: "Poppins", sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+  width: 100%;
+  aspect-ratio: 16/9; /* mantém proporção perfeita */
+  background: url('red-hexagons-black-background_889227-11882.jpg')
+    no-repeat center center/cover;
+  position: relative;
+  overflow: hidden;
+}
+
+    header img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Mostra a imagem inteira sem cortar */
+  object-position: center;
+  filter: brightness(0.9);
+}
+
+    header h1 {
+      position: absolute;
+      top: 75%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3em;
+      color: #fff;
+      text-shadow: 0 0 10px red;
+      margin: 0;
+    }
+
+    .botoes {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    button {
+      width: 240px;
+      text-align: center;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 40px;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: black;
+      background: white;
+      box-shadow: 0 0 10px silver, inset 0 0 8px red;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: brilho 1.5s infinite alternate;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px red, inset 0 0 10px red;
+    }
+
+    .bonus-button {
+      width: 180px;
+      
+      font-size: 1.1em;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: 50px;
+      transition: 0.4s ease;
+      background: linear-gradient(135deg, #00ffe7, #ff00cc);
+      box-shadow: 0 0 15px rgba(255, 0, 204, 0.5), 0 0 25px rgba(0, 255, 231, 0.4);
+      animation: pulseGlow 2.5s infinite ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bonus-button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #ffcc00, #00ffe7);
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.8), 0 0 40px rgba(0, 255, 231, 0.7);
+    }
+
+    @keyframes brilho {
+      from { box-shadow: 0 0 10px red, inset 0 0 5px red; }
+      to   { box-shadow: 0 0 25px red, inset 0 0 12px red; }
+    }
+
+    footer {
+      background: #0a0a0a;
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9em;
+      color: #888;
+      margin-top: 60px;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="app">
+
+    <header>
+      <img :src="headerImg" alt="Header">
+      <h1>{{ titulo }}</h1>
+    </header>
+
+    <div class="botoes">
+
+      <!-- BOTÕES COM LINK -->
+      <a 
+        v-for="(btn, index) in botoes" 
+        :key="index"
+        :href="btn.link"
+        target="_blank"
+        style="text-decoration: none;"
+      >
+        <button>
+          {{ btn.text }}
+        </button>
+      </a>
+
+      <!-- BONUS -->
+      <a 
+        href="https://seu-link-bonus.com"
+        target="_blank"
+        class="bonus-button"
+      >
+        Bônus
+      </a>
+
+    </div>
+
+    <footer>
+      <p>&copy; Criado por <a href="#" style="color:red; text-decoration: none;">GabrielPrime</a></p>
+      <p><a href="privacy.html" style="color: red">Política de Privacidade</a></p>
+    </footer>
+
+  </div>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          headerImg: "Biel4.png",
+          titulo: "GabrielPrime",
+          botoes: [
+            { text: "LivePix", link: "https://livepix.gg/gabrielprime" },
+            { text: "Discord", link: "https://discord.gg/4m3UUbjvvj" },
+            { text: "Instagram", link: "https://www.instagram.com/gabriel500gamer?utm_source=qr&igsh=MTU4aXdzZ2NhZDhrbA==" }
+          ]
+        }
+      }
+    });
+
+    app.mount("#app");
+  </script>
+
+</body>
+</html>
