@@ -27,10 +27,11 @@
 
     /* Área que cresce e empurra o footer */
     main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+  flex: 1;
+  display: flex;
+  justify-content: center;   /* centraliza vertical */
+  align-items: center;        /* centraliza horizontal */
+  padding: 40px 0;
     }
 
     /* ------- HEADER ------- */
@@ -71,22 +72,22 @@
       padding-bottom: 50px; 
     }
 
-    button {
-      width: 240px;
-      min-height: 55px;
-      text-align: center;
-      border: none;
-      border-radius: 50px;
-      padding: 14px 40px;
-      font-size: 1.2em;
-      font-weight: bold;
-      color: black;
-      background: white;
-      box-shadow: 0 0 10px silver, inset 0 0 8px red;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      animation: brilho 1.5s infinite alternate;
-    }
+button {
+  width: 300px;         /* AUMENTADO */
+  min-height: 70px;     /* AUMENTADO */
+  text-align: center;
+  border: none;
+  border-radius: 50px;
+  padding: 18px 40px;
+  font-size: 1.4em;     /* AUMENTADO */
+  font-weight: bold;
+  color: black;
+  background: white;
+  box-shadow: 0 0 12px silver, inset 0 0 10px red;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: brilho 1.5s infinite alternate;
+}
 
     button:hover {
       transform: scale(1.05);
