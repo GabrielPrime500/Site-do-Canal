@@ -6,44 +6,49 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
   <style>
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-
-#app {
-  flex: 1; /* força o conteúdo a empurrar o footer para baixo */
-}
-    
-    body {
-display: flex;
-  flex-direction: column;
-      
+    /* ------- LAYOUT PRINCIPAL ------- */
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
-      background: url('4.jpg') no-repeat center center/cover;
-      font-family: "Poppins", sans-serif;
-      min-height: 100vh;
     }
 
+    body {
+      background: url('4.jpg') no-repeat center center/cover;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* O APP vira o "container principal" */
+    #app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Área que cresce e empurra o footer */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ------- HEADER ------- */
     header {
-  width: 100%;
-  aspect-ratio: 16/9; /* mantém proporção perfeita */
-  background: url('red-hexagons-black-background_889227-11882.jpg')
-    no-repeat center center/cover;
-  position: relative;
-  overflow: hidden;
-}
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: url('red-hexagons-black-background_889227-11882.jpg')
+        no-repeat center center/cover;
+      position: relative;
+      overflow: hidden;
+    }
 
     header img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Mostra a imagem inteira sem cortar */
-  object-position: center;
-  filter: brightness(0.9);
-}
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: brightness(0.9);
+    }
 
     header h1 {
       position: absolute;
@@ -56,26 +61,24 @@ display: flex;
       margin: 0;
     }
 
+    /* ------- BOTÕES ------- */
     .botoes {
-      margin-top: 60px;
-  padding-bottom: 60px; /* evita colar no footer */
-
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 15px;
-      margin-top: 40px;
+      margin-top: 50px;
+      padding-bottom: 50px; 
     }
 
     button {
-      min-height: 55px;
-  font-size: 1.2em;
       width: 240px;
+      min-height: 55px;
       text-align: center;
       border: none;
       border-radius: 50px;
       padding: 14px 40px;
-      font-size: 1.1em;
+      font-size: 1.2em;
       font-weight: bold;
       color: black;
       background: white;
@@ -92,10 +95,8 @@ display: flex;
 
     .bonus-button {
       width: 180px;
-      
       font-size: 1.1em;
       font-weight: bold;
-      text-transform: uppercase;
       text-decoration: none;
       color: #fff;
       padding: 15px 30px;
@@ -120,17 +121,23 @@ display: flex;
       to   { box-shadow: 0 0 25px red, inset 0 0 12px red; }
     }
 
+    /* ------- FOOTER ------- */
     footer {
       background: #0a0a0a;
       text-align: center;
       padding: 30px;
       font-size: 0.9em;
       color: #888;
-      margin-top: 60px;
+      margin-top: 30px;
+    }
+
+    footer a {
+      color: red;
+      text-decoration: none;
     }
   </style>
-
 </head>
+
 <body>
   <div id="app">
 
@@ -139,38 +146,38 @@ display: flex;
       <h1>{{ titulo }}</h1>
     </header>
 
-    <div class="botoes">
+    <!-- ÁREA QUE OCUPA O MEIO DA TELA -->
+    <main>
+      <div class="botoes">
+        <a 
+          v-for="(btn, index) in botoes" 
+          :key="index"
+          :href="btn.link"
+          target="_blank"
+          style="text-decoration: none;"
+        >
+          <button>
+            {{ btn.text }}
+          </button>
+        </a>
 
-      <!-- BOTÕES COM LINK -->
-      <a 
-        v-for="(btn, index) in botoes" 
-        :key="index"
-        :href="btn.link"
-        target="_blank"
-        style="text-decoration: none;"
-      >
-        <button>
-          {{ btn.text }}
-        </button>
-      </a>
-
-      <!-- BONUS -->
-      <a 
-        href="https://seu-link-bonus.com"
-        target="_blank"
-        class="bonus-button"
-      >
-        Bônus
-      </a>
-
-    </div>
+        <a 
+          href="https://seu-link-bonus.com"
+          target="_blank"
+          class="bonus-button"
+        >
+          Bônus
+        </a>
+      </div>
+    </main>
 
     <footer>
-      <p>&copy; Criado por <a href="#" style="color:red; text-decoration: none;">GabrielPrime</a></p>
-      <p><a href="privacy.html" style="color: red">Política de Privacidade</a></p>
+      <p>&copy; Criado por <a href="#">GabrielPrime</a></p>
+      <p><a href="privacy.html">Política de Privacidade</a></p>
     </footer>
 
   </div>
+
 
   <script>
     const app = Vue.createApp({
