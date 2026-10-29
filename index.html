@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GabrielPrime</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    radial-gradient(circle at top,
+    #300000 0%,
+    #120000 20%,
+    #050505 60%,
+    #000000 100%);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Fundo animado */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:200%;
+    height:200%;
+    top:-50%;
+    left:-50%;
+
+    background:
+    radial-gradient(#ff1a1a55 2px, transparent 2px);
+
+    background-size:60px 60px;
+
+    animation:girar 40s linear infinite;
+
+    z-index:-1;
+}
+
+@keyframes girar{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* Entrada */
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:50px 20px;
+
+    text-align:center;
+
+    animation:entrada 1.5s ease;
+}
+
+@keyframes entrada{
+    from{
+        opacity:0;
+        transform:
+        translateY(100px)
+        scale(.8);
+        filter:blur(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+        translateY(0)
+        scale(1);
+        filter:blur(0);
+    }
+}
+
+/* Perfil */
+
+.profile{
+    margin-top:30px;
+}
+
+.profile img{
+    width:180px;
+    height:180px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:5px solid #ff1a1a;
+
+    box-shadow:
+    0 0 25px #ff0000,
+    0 0 50px #ff000088;
+
+    transition:.5s;
+}
+
+.profile img:hover{
+    transform:scale(1.08);
+}
+
+h1{
+    margin-top:25px;
+    font-size:3rem;
+    font-weight:800;
+}
+
+h1 span{
+    color:#ff1a1a;
+
+}
+
+.bio{
+    margin-top:15px;
+
+    color:#d8d8d8;
+
+    line-height:1.8;
+
+    max-width:700px;
+
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/* Botões */
+
+.links{
+    margin-top:50px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+}
+
+.btn{
+    position:relative;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #111,
+    #1f1f1f);
+
+    border:1px solid #ff1a1a55;
+
+    overflow:hidden;
+
+    transition:.4s;
+}
+
+.btn::before{
+    content:'';
+
+    position:absolute;
+
+    width:120%;
+    height:120%;
+
+    top:-100%;
+    left:-100%;
+
+    background:
+    linear-gradient(
+    45deg,
+    transparent,
+    #ff1a1a55,
+    transparent);
+
+    transition:.6s;
+}
+
+.btn:hover::before{
+    top:100%;
+    left:100%;
+}
+
+.btn:hover{
+    transform:
+    translateY(-8px)
+    scale(1.03);
+
+    border-color:#ff1a1a;
+
+    box-shadow:
+    0 0 20px #ff1a1a88,
+    0 0 40px #ff1a1a44;
+}
+
+.btn h3{
+    color:#ff2b2b;
+    margin-bottom:5px;
+}
+
+/* Rodapé */
+
+footer{
+    margin-top:70px;
+
+    padding:30px;
+
+    border-top:1px solid #ff1a1a33;
+
+    color:#888;
+    
+    background-color: black;
+}
+
+/* Linha decorativa */
+
+.line{
+    width:180px;
+    height:4px;
+
+    margin:20px auto;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    #ff1a1a,
+    transparent);
+
+    box-shadow:
+    0 0 15px #ff1a1a;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="profile">
+
+        <!-- TROQUE PELA SUA FOTO -->
+        <img src="IMG/GabrielPrime.png">
+
+        <h1>
+            Gabriel<span>Prime</span>
+        </h1>
+
+        <div class="line"></div>
+
+        <p class="bio">
+            Programador, criador de conteúdo, jogos e inovação. Construindo projetos,
+            compartilhando conhecimento e deixando uma marca no mundo.
+        </p>
+
+    </div>
+
+    <div class="links">
+
+        <a href="dcservers.html" class="btn">
+            <h3>Discord</h3>
+            <p>Entre na comunidade.</p>
+        </a>
+
+        <a href="canaisYT.html" class="btn">
+            <h3>YouTube</h3>
+            <p>Tutoriais, séries e muito mais!</p>
+        </a>
+
+        <a href="canaisTKTK.html" class="btn">
+            <h3>TikTok</h3>
+            <p>Tutoriais, séries e muito mais!</p>
+        </a>
+
+        
+                <a href="https://www.instagram.com/gabriel500gamer?igsh=MTU4aXdzZ2NhZDhrbA==" class="btn">
+            <h3>Instagram</h3>
+            <p>Fotos, novidades e bastidores.</p>
+        </a>
+        
+        
+
+    </div>
+
+    <footer>
+        © 2026 GabrielPrime 
+    </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canais do GabrielPrime</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #080808;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Fundo tecnológico */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(rgba(255,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,0,0,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+}
+
+/* Conteúdo */
+main {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #ff2b2b;
+    font-size: 2.8rem;
+    text-shadow: 0 0 10px red, 0 0 20px darkred;
+}
+
+.titulo-linha {
+    width: 120px;
+    height: 3px;
+    background: #8b0000;
+    margin: 15px auto 25px;
+    border-radius: 10px;
+}
+
+/* Descrição */
+.descricao {
+    background: #111;
+    border: 2px solid #8b0000;
+    border-radius: 10px;
+    padding: 20px;
+    line-height: 1.7;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255,0,0,.2);
+}
+
+/* Dois canais centralizados */
+.canal-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 35px;
+    margin: 45px auto 20px;
+    max-width: 650px;
+}
+
+/* Cartões */
+.canal-card {
+    flex: 1;
+    max-width: 280px;
+    min-width: 0;
+    padding: 25px 15px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    background: #111;
+    border: 2px solid #550000;
+    border-radius: 18px;
+    transition: .3s ease;
+}
+
+.canal-card:hover {
+    transform: translateY(-8px);
+    border-color: #ff2b2b;
+    box-shadow: 0 0 22px rgba(255,0,0,.3);
+}
+
+/* Imagens maiores */
+.canal-card img {
+    display: block;
+    width: 150px;
+    height: 150px;
+    max-width: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 3px solid #8b0000;
+    background: #111;
+    transition: .3s ease;
+}
+
+.canal-card:hover img {
+    border-color: #ff2b2b;
+    box-shadow: 0 0 18px rgba(255,0,0,.5);
+    transform: scale(1.05);
+}
+
+/* Nome dos canais */
+.canal-card span {
+    display: block;
+    margin-top: 18px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: auto;
+    border-top: 1px solid #330000;
+    color: #999;
+    background: black;
+}
+
+/* Celulares */
+@media (max-width: 500px) {
+    main {
+        padding: 25px 12px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .canal-grid {
+        gap: 12px;
+        margin-top: 35px;
+    }
+
+    .canal-card {
+        padding: 18px 8px;
+        border-radius: 14px;
+    }
+
+    .canal-card img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .canal-card span {
+        font-size: 15px;
+        overflow-wrap: anywhere;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main>
+    <h1>Canais-TikTok</h1>
+
+    <div class="titulo-linha"></div>
+
+    <div class="descricao">
+        Cada canal é uma aventura diferente!
+    </div>
+
+    <div class="canal-grid">
+
+        <a href="tiktok.com/@kinggabrielprime"
+           class="canal-card">
+            <img src="IMG/prime.png"
+                 alt="Canal GabrielPrime">
+            <span>GabrielPrime</span>
+        </a>
+
+        <a href="tiktok.com/@bielprimecraft"
+           class="canal-card">
+            <img src="IMG/primecraft.png"
+                 alt="Canal Prime Craft">
+            <span>Prime Craft</span>
+        </a>
+
+    </div>
+</main>
+
+<footer>
+    © 2026 GabrielPrime - Todos os direitos reservados.
+</footer>
+
+</body>
+</html>
